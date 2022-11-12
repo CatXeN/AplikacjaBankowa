@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BankAccount;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $id = auth()->user()->id;
+        $bank_account = BankAccount::where('user_id', '=', $id)->first();
+
+        return view('home', ['bankAccount' => $bank_account]);
     }
 }

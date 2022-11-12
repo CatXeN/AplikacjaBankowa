@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\BankAccount;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -64,10 +65,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+
+        //Wymyślić sposób na generowanie numeru konta
+        $count = BankAccount::count();
+
+        if ($count == 0) {
+            $count = 1;
+        } else {
+            $count++;
+        }
+
+        BankAccount::create([
+            'name' => 'Konto bankowe',
+            'number' => $count,
+            'balance' => 0,
+            'user_id' => $user->id,
+        ]);
+
+        return $user;
     }
 }

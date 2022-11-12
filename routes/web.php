@@ -14,11 +14,10 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-// Route::get('/', function () {o
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-//Route::get('/', [AuthController::class, 'index']);
 
 Auth::routes();
 
