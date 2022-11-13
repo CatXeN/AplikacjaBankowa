@@ -9,6 +9,8 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
+
 
 class RegisterController extends Controller
 {
@@ -71,18 +73,9 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        //Wymyślić sposób na generowanie numeru konta
-        $count = BankAccount::count();
-
-        if ($count == 0) {
-            $count = 1;
-        } else {
-            $count++;
-        }
-
         BankAccount::create([
             'name' => 'Konto bankowe',
-            'number' => $count,
+            'number' => Str::uuid()->toString(),
             'balance' => 0,
             'user_id' => $user->id,
         ]);

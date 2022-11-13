@@ -13,11 +13,13 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('bank_accounts', function (Blueprint $table) {
+        Schema::create('transactions_history', function (Blueprint $table) {
             $table->id();
-            $table->uuid('name');
-            $table->string('number');
-            $table->decimal('balance');
+            $table->uuid('recipient_account_number');
+            $table->uuid('owner_account_number');
+            $table->string('recipient_name');
+            $table->string('transfer_title');
+            $table->decimal('amount');
 
             //foregin-key
             $table->bigInteger('user_id')->unsigned();
@@ -27,6 +29,8 @@ return new class extends Migration
         });
     }
 
+
+
     /**
      * Reverse the migrations.
      *
@@ -34,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('bank_account');
+        Schema::dropIfExists('transactions_history');
     }
 };

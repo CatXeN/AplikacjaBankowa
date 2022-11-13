@@ -15,21 +15,41 @@
                     @endif
 
                     <!-- {{ __('You are logged in!') }} -->
-                    <h2>{{$bankAccount->name}}</h2>
-                    <p>{{$bankAccount->number}}</p>
-                    <h2>Dostępne środki: {{$bankAccount->balance}}</h2>
+                    <div>
+                        <h4>Witaj, {{ Auth::user()->name }}</h4>
+                    </div>
+
+                    <div class="account-info">
+                        <b>{{$bankAccount->name}}:</b>
+                        <span>{{$bankAccount->number}}</span>
+                    </div>
+
+                    <div class="balance-account">
+                        <b>Dostępne środki:</b>
+                        <span>{{$bankAccount->balance}} zł</span>
+                    </div>
                 </div>
             </div>
 
             <div class="card mt-2">
                 <div class="card-header">Panel akcji</div>
 
-                <button type="button" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-euro" aria-hidden="true"></span> Star
-                </button>
+                <div class="card-body">
+                    <button class="btn btn-icon"><i class="material-icons">payments</i>Wykonaj przelew</button>
+                    <button class="btn btn-icon"><i class="material-icons">history</i>Historia przelewów</button>
+                    <button class="btn btn-icon"><i class="material-icons">contacts</i>Kontkaty</button>
+                </div>
 
-                <i class="bi bi-1-circle-fill"></i>
             </div>
+
+            <div class="card mt-2">
+                <div class="card-header">Ostatnie przelewy</div>
+
+                <div class="card-body">
+
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
