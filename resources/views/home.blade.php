@@ -36,7 +36,7 @@
 
                 <div class="card-body">
                     <button onclick="window.location='{{url('/transfer')}}'" class="btn btn-icon"><i class="material-icons">payments</i>Wykonaj przelew</button>
-                    <button class="btn btn-icon"><i class="material-icons">history</i>Historia przelewów</button>
+                    <button onclick="window.location='{{url('/history')}}'" class="btn btn-icon"><i class="material-icons">history</i>Historia przelewów</button>
                     <button class="btn btn-icon"><i class="material-icons">contacts</i>Kontkaty</button>
                 </div>
 
