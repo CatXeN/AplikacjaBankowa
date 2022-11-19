@@ -40,16 +40,31 @@ class TransferController extends Controller
         return redirect('/home');
     }
 
-    public function pageData() {
+    public function pageData(Request $request, $type) {
         $id = auth()->user()->id;
         $bank_account = BankAccount::where('user_id', '=', $id)->first();
 
-        $transactions_history = TransactionHistory::where('recipient_account_number', '=', $bank_account->number)
-            ->join('users', 'users.id', '=', 'user_id')
-            ->orWhere('owner_account_number', '=', $bank_account->number)
-            ->orderBy('transactions_history.created_at', 'desc')
-            ->get();
-
-        return view('history', ['bankAccount' => $bank_account, 'transactions_history' => $transactions_history]);
+        if ($type === 'all') {
+            return view('history', ['bankAccount' => $bank_account, 'transactions_history' =>
+                TransactionHistory::where('recipient_account_number', '=', $bank_account->number)
+                ->join('users', 'users.id', '=', 'user_id')
+                ->orWhere('owner_account_number', '=', $bank_account->number)
+                ->orderBy('transactions_history.created_at', 'desc')
+                ->get()]);
+        }
+        else if ($type === 'charge') {
+            return view('history', ['bankAccount' => $bank_account, 'transactions_history' =>
+                TransactionHistory::where('owner_account_number', '=', $bank_account->number)
+                    ->join('users', 'users.id', '=', 'user_id')
+                    ->orderBy('transactions_history.created_at', 'desc')
+                    ->get()]);
+        }
+        else if ($type === 'recognition') {
+            return view('history', ['bankAccount' => $bank_account, 'transactions_history' =>
+                TransactionHistory::where('recipient_account_number', '=', $bank_account->number)
+                    ->join('users', 'users.id', '=', 'user_id')
+                    ->orderBy('transactions_history.created_at', 'desc')
+                    ->get()]);
+        }
     }
 }
