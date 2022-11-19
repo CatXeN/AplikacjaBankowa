@@ -32,6 +32,7 @@ class HomeController extends Controller
                                                     ->join('users', 'users.id', '=', 'user_id')
                                                     ->orWhere('owner_account_number', '=', $bank_account->number)
                                                     ->orderBy('transactions_history.created_at', 'desc')
+                                                    ->take(10)
                                                     ->get();
 
         return view('home', ['bankAccount' => $bank_account, 'transactions_history' => $transactions_history]);
