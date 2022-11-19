@@ -28,4 +28,4 @@ Route::get('/transfer', 'App\Http\Controllers\TransferController@index');
 
 Route::post('/send_money', 'App\Http\Controllers\TransferController@send_money');
 
-Route::get('/history', 'App\Http\Controllers\TransferController@pageData');
+Route::get('/history/{type}', 'App\Http\Controllers\TransferController@pageData');
