@@ -1,4 +1,22 @@
 .transfer-box {
     display: flex;
     flex-direction: column;
+
+    span {
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    div {
+        margin-bottom: 20px;
+    }
+
+    .action-box {
+        display: flex;
+        justify-content: flex-end;
+
+        button:nth-child(1n) {
+            margin-left: 10px;
+        }
+    }
 }

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\TransferController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +24,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/transfer', function () {
-   return view('transfer');
-});
+Route::get('/transfer', 'App\Http\Controllers\TransferController@index');
+
+Route::post('/send_money', 'App\Http\Controllers\TransferController@send_money');
