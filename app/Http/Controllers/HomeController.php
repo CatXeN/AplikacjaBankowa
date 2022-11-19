@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\BankAccount;
+use App\Models\TransactionHistory;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -27,6 +28,12 @@ class HomeController extends Controller
         $id = auth()->user()->id;
         $bank_account = BankAccount::where('user_id', '=', $id)->first();
 
-        return view('home', ['bankAccount' => $bank_account]);
+        $transactions_history = TransactionHistory::where('recipient_account_number', '=', $bank_account->number)
+                                                    ->join('users', 'users.id', '=', 'user_id')
+                                                    ->orWhere('owner_account_number', '=', $bank_account->number)
+                                                    ->orderBy('transactions_history.created_at', 'desc')
+                                                    ->get();
+
+        return view('home', ['bankAccount' => $bank_account, 'transactions_history' => $transactions_history]);
     }
 }

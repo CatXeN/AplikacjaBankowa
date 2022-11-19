@@ -20,3 +20,39 @@
         }
     }
 }
+
+.transfer-history {
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+
+.transaction-list {
+    display: flex;
+    height: 49px;
+    margin-bottom: 10px;
+
+    .transaction-icon {
+        margin-right: 20px;
+        height: 30px;
+        width: 30px;
+        background-color: #f1eded;
+        border-radius: 50%;
+        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.recognition {
+    color: #53c152;
+}
+
+.charge {
+    color: #FF3333;
+}
+
+.transaction-list:hover {
+    background-color: #f8f9fa;
+}
