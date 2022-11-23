@@ -16,7 +16,7 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-    @vite(['resources/sass/_constants.scss', 'resources/sass/home.scss', 'resources/sass/transfer.scss'])
+    @vite(['resources/sass/_constants.scss', 'resources/sass/home.scss', 'resources/sass/transfer.scss', 'resources/sass/admin.scss'])
 </head>
 <body>
     <div id="app">
@@ -57,6 +57,11 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+
+                                    @if (Auth::user()->is_admin)
+                                        <a class="dropdown-item" onclick="window.location='{{url('/admin')}}'">Panel administracyjny</a>
+                                    @endif
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
