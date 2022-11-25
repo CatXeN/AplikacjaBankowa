@@ -31,3 +31,7 @@ Route::post('/send_money', 'App\Http\Controllers\TransferController@send_money')
 Route::get('/history/{type}', 'App\Http\Controllers\TransferController@pageData');
 
 Route::get('/admin', 'App\Http\Controllers\AdminController@index');
+
+Route::get('/users/edit/{id}', 'App\Http\Controllers\AdminController@edit');
+
+Route::post('/edit_user', 'App\Http\Controllers\AdminController@edit_user');

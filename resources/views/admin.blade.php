@@ -31,7 +31,7 @@
                                 <td>{{$user->created_at}}</td>
                                 <td><input type="checkbox" disabled @checked($user->is_admin) "></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary">Edytuj</button>
+                                    <button onclick="window.location='{{url('/users/edit/' . $user->id)}}'" type="button" class="btn btn-primary">Edytuj</button>
                                     <button type="button" class="btn btn-danger">Usuń</button>
                                 </td>
                             </tr>
