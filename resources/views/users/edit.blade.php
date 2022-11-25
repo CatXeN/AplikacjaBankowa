@@ -9,6 +9,7 @@
                 <div class="card-header">Edytuj użytkownika</div>
                 <div class="card-body">
                     <form method="POST" action="{{ action('App\Http\Controllers\AdminController@edit_user') }}">
+                        @csrf
                         <div>
                             <label for="user_id">Id użytkownika</label>
                             <div class="input-group mb-3">

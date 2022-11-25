@@ -27,6 +27,15 @@ class AdminController extends Controller
     {
         $values =  $request->all();
 
-        return 'test';
+        $user = User::firstWhere('id', '=', $values['id']);
+        $user->name = $values['name'];
+        $user->email = $values['email'];
+        $user->save();
+
+        $bankAccount = BankAccount::firstWhere('user_id', '=', $values['id']);
+        $bankAccount->balance = $values['balance'];
+        $bankAccount->save();
+
+        return redirect('/admin');
     }
 }
