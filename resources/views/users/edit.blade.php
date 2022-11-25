@@ -20,28 +20,44 @@
                         <div>
                             <label for="name">Imię i Nazwisko</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="name" value="{{$user->name}}" id="name">
+                                <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{$user->name}}" id="name">
+
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>Imie i Nazwisko jest wymagane</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div>
                             <label for="email">E-mail</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="email" value="{{$user->email}}" id="email">
+                                <input type="text" class="form-control @error('email') is-invalid @enderror" name="email" value="{{$user->email}}" id="email">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>Wprowadź poprawny format e-mail</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div>
                             <label for="balance">Balans konta</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="balance" value="{{$account->balance}}" id="balance">
+                                <input type="text" class="form-control @error('balance') is-invalid @enderror" name="balance" value="{{$account->balance}}" id="balance">
+                                @error('balance')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>Wprowadź liczbę</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
                         <div>
                             <label for="date">Data dołączenia klienta</label>
                             <div class="input-group mb-3">
-                                <input type="text" class="form-control" name="date" value="{{$user->created_at}}" id="date">
+                                <input type="text" class="form-control" name="date" value="{{$user->created_at}}" id="date" readonly>
                             </div>
                         </div>
 

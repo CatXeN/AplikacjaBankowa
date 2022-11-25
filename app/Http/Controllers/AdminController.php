@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BankAccount;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -26,6 +27,15 @@ class AdminController extends Controller
     public function edit_user(Request $request)
     {
         $values =  $request->all();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+            'balance' => 'required|numeric'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('users/edit/' . $values['id'])->withErrors($validator)->withInput();
+        }
 
         $user = User::firstWhere('id', '=', $values['id']);
         $user->name = $values['name'];
