@@ -23,22 +23,46 @@
 
                         <div>
                             <span>Tytuł przelewu:</span>
-                            <input type="text" class="form-control" placeholder="Wpisz nazwe przelewu" name="title" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control @error('title') is-invalid @enderror" placeholder="Wpisz nazwe przelewu" name="title" aria-describedby="basic-addon1">
+
+                            @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>Wprowadź tytuł przelewu</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div>
                             <span>Numer rachunku odbiorcy:</span>
-                            <input type="text" class="form-control" placeholder="Numer rachunku odbiorcy" name="recipient_number" aria-describedby="basic-addon1" step=".01">
+                            <input type="text" class="form-control @error('recipient_number') is-invalid @enderror" placeholder="Numer rachunku odbiorcy" name="recipient_number" aria-describedby="basic-addon1" step=".01">
+
+                            @error('recipient_number')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>Wprowadź numer konta odbiorcy</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div>
                             <span>Nazwa odbiorcy:</span>
-                            <input type="text" class="form-control" placeholder="Wpisz nazwe odbiorcy" name="recipient_name" aria-describedby="basic-addon1">
+                            <input type="text" class="form-control @error('recipient_name') is-invalid @enderror" placeholder="Wpisz nazwe odbiorcy" name="recipient_name" aria-describedby="basic-addon1">
+
+                            @error('recipient_name')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>Wprowadź nazwe odbiorcy</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div>
                             <span>Kwota:</span>
-                            <input type="number" class="form-control" name="amount" aria-describedby="basic-addon1" step=".01">
+                            <input type="number" class="form-control @error('amount') is-invalid @enderror" name="amount" aria-describedby="basic-addon1" step=".01">
+
+                            @error('amount')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>Niepoprwany format</strong>
+                                    </span>
+                            @enderror
                         </div>
 
                         <div class="action-box">

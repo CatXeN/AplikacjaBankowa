@@ -6,6 +6,7 @@ use App\Models\BankAccount;
 use App\Models\TransactionHistory;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
+use Validator;
 
 class TransferController extends Controller
 {
@@ -19,6 +20,18 @@ class TransferController extends Controller
     public function send_money(Request $request) {
         $id = auth()->user()->id;
         $values =  $request->all();
+
+
+        $validator = Validator::make($request->all(), [
+            'recipient_name' => 'required|min:5',
+            'title' => 'required|min:5',
+            'amount' => 'required|numeric',
+            'recipient_number' => 'required|min:5'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('transfer')->withErrors($validator)->withInput();
+        }
 
         TransactionHistory::create([
             'recipient_account_number' => $values['recipient_number'],
