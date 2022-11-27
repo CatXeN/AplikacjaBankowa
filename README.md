@@ -1,6 +1,10 @@
-Run project -> php artisan serve
-Add seed -> php artisan make:seeder UsersTablesSeeder
-Run seed -> php artisan db:seed
-Apply migration -> php artisan migrate
+##Aplikacja bankowa
 
-Add new controller -> php artisan make:controller Name
+#Wymagania w celu odpalenia projektu:
+- php 
+- mysql
+- laravel
+
+
+Włączenie projektu -> php artisan serve <br>
+Aplikowanie migracji -> php artisan migrate <br>
