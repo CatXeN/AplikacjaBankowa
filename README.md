@@ -1,6 +1,7 @@
-##Aplikacja bankowa
+## Aplikacja bankowa
+Projekt na zaliczenie WSB
 
-#Wymagania w celu odpalenia projektu:
+# Wymagania w celu odpalenia projektu:
 - php 
 - mysql
 - laravel
