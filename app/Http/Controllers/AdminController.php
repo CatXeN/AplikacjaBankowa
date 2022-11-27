@@ -24,6 +24,16 @@ class AdminController extends Controller
         return view('users/edit', ['user' => $user, 'account' => $account]);
     }
 
+    public function remove(Request $request)
+    {
+        $user = User::where('id', '=', $request->user_id)->first();
+        $account = BankAccount::where('user_id', '=', $request->user_id)->first();
+        $account->delete();
+        $user->delete();
+
+        return redirect('/admin');
+    }
+
     public function edit_user(Request $request)
     {
         $values =  $request->all();

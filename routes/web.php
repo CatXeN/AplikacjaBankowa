@@ -35,3 +35,5 @@ Route::get('/admin', 'App\Http\Controllers\AdminController@index');
 Route::get('/users/edit/{id}', 'App\Http\Controllers\AdminController@edit');
 
 Route::post('/edit_user', 'App\Http\Controllers\AdminController@edit_user');
+
+Route::post('/remove', 'App\Http\Controllers\AdminController@remove');

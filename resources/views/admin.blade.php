@@ -30,9 +30,14 @@
                                 <td>{{$user->email}}</td>
                                 <td>{{$user->created_at}}</td>
                                 <td><input type="checkbox" disabled @checked($user->is_admin) "></td>
-                                <td>
+                                <td style="display: flex;">
                                     <button onclick="window.location='{{url('/users/edit/' . $user->id)}}'" type="button" class="btn btn-primary">Edytuj</button>
-                                    <button type="button" class="btn btn-danger">Usuń</button>
+
+                                    <form method="POST" action="{{ action('App\Http\Controllers\AdminController@remove') }}">
+                                        @csrf
+                                        <input type="hidden" name="user_id" value="{{$user->id}}">
+                                        <button style="margin-left: 5px;" type="submit" class="btn btn-danger">Usuń</button>
+                                    </form>
                                 </td>
                             </tr>
                         @endforeach
